@@ -15,14 +15,23 @@
   });
 
   module.exports = {
-    catalogueUrl:  util.format("http://catalogue%s", domain),
-    tagsUrl:       util.format("http://catalogue%s/tags", domain),
-    cartsUrl:      util.format("http://carts%s/carts", domain),
-    ordersUrl:     util.format("http://orders%s", domain),
-    customersUrl:  util.format("http://user%s/customers", domain),
-    addressUrl:    util.format("http://user%s/addresses", domain),
-    cardsUrl:      util.format("http://user%s/cards", domain),
-    loginUrl:      util.format("http://user%s/login", domain),
-    registerUrl:   util.format("http://user%s/register", domain),
+    catalogueUrl:  util.format("http://%s%s:%d",           process.env.CATALOGUE_CONNECT_SERVICE_HOST || 'catalogue', domain, 
+                                                           process.env.CATALOGUE_CONNECT_SERVICE_PORT || 80),
+    tagsUrl:       util.format("http://%s%s:%d/tags",      process.env.CATALOGUE_CONNECT_SERVICE_HOST || 'catalogue', domain, 
+                                                           process.env.CATALOGUE_CONNECT_SERVICE_PORT || 80),
+    cartsUrl:      util.format("http://%s%s:%d/carts",     process.env.CARTS_CONNECT_SERVICE_HOST || 'carts', domain, 
+                                                           process.env.CARTS_CONNECT_SERVICE_PORT || 80),
+    ordersUrl:     util.format("http://%s%s:%d",           process.env.ORDERS_CONNECT_SERVICE_HOST || 'orders', domain, 
+                                                           process.env.ORDERS_CONNECT_SERVICE_PORT || 80),
+    customersUrl:  util.format("http://%s%s:%d/customers", process.env.USER_CONNECT_SERVICE_HOST || 'user', domain, 
+                                                           process.env.USER_CONNECT_SERVICE_PORT || 80),
+    addressUrl:    util.format("http://%s%s:%d/addresses", process.env.USER_CONNECT_SERVICE_HOST || 'user', domain, 
+                                                           process.env.USER_CONNECT_SERVICE_PORT || 80),
+    cardsUrl:      util.format("http://%s%s:%d/cards",     process.env.USER_CONNECT_SERVICE_HOST || 'user', domain, 
+                                                           process.env.USER_CONNECT_SERVICE_PORT || 80),
+    loginUrl:      util.format("http://%s%s:%d/login",     process.env.USER_CONNECT_SERVICE_HOST || 'user', domain, 
+                                                           process.env.USER_CONNECT_SERVICE_PORT || 80),
+    registerUrl:   util.format("http://%s%s:%d/register",  process.env.USER_CONNECT_SERVICE_HOST || 'user', domain, 
+                                                           process.env.USER_CONNECT_SERVICE_PORT || 80),
   };
 }());
